@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        function LoadData()
+        {
+            $.ajax({
+                type:"get",
+                data:"",
+                url:"http://localhost:60494/api/user",
+                contentType:"application/json;charset=utf-8",//请求数据的类型
+                dataType:"json",//返回数据的类型
+                success:function(list)
+                {
+                    var list1=$("#list");
+                    list1.empty();
+                    $.each(list,function(index,item){
+                        list1.append("<tr><td>"+item.UName+"</td><td>"+item.Remark+"</td></tr>");
+                    })
+                }
+            });
+        }
+        $(function () {
+            LoadData();
+        })
+    </script>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>备注</th>
+            </tr>
+        </thead>
+        <tbody id="list">
+
+        </tbody>
+    </table>
+</body>
+</html>

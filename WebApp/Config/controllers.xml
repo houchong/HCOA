@@ -7,6 +7,9 @@
   <object type="WebApp.Controllers.HomeController, WebApp" singleton="false" >
     <property name="userInfoService" ref="userInfoService" />
   </object>
+  <object type="WebApp.Controllers.UserController, WebApp" singleton="false" >
+    <property name="userInfoService" ref="userInfoService" />
+  </object>
   <object name="userInfoService" type="BLL.UserInfoService, BLL" singleton="false" >
   </object>
   <!--intentionally do NOT register the AccountController with the container; demonstrates that the underlying

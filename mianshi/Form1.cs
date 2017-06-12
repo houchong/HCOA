@@ -1,5 +1,4 @@
-﻿using Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Model;
-using System.Data.Entity;
+using System.ServiceModel;
+using System.ServiceModel.Description;
 
 namespace mianshi
 {
@@ -22,27 +21,27 @@ namespace mianshi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TextQuestion tq = new TextQuestion();
-            tq.title = "fdf";
-            string s = "123";
-            int si = s.ToInt();
-            MessageBox.Show(si.GetType().ToString());
+            //TextQuestion tq = new TextQuestion();
+            //tq.title = "fdf";
+            //string s = "123";
+            //int si = s.ToInt();
+            //MessageBox.Show(si.GetType().ToString());
         }
         //public List<Product> GetActiveProducts(IQueryable<Product> query)
         //{
         //    return query.WhereNotDeleted().ToList();
         //}
-        OAEntities oaEntities = new OAEntities();
+        //OAEntities oaEntities = new OAEntities();
         private void button2_Click(object sender, EventArgs e)
         {
-            Product p = new Product();
-            p.Validate2();
-            IQueryable<UserDetail> iqUser = oaEntities.UserDetail.Where(u => true);
-            IQueryable<Income> iqIncome = oaEntities.Income.Where(u => true);
-            List<UserIncomeDto> listDto = GetUserIncomeDtos(iqUser, iqIncome);
-        }
-        public List<UserIncomeDto> GetUserIncomeDtos(IQueryable<UserDetail> users, IQueryable<Income> incomes)
-        {
+            //Product p = new Product();
+            //p.Validate2();
+            //IQueryable<UserDetail> iqUser = oaEntities.UserDetail.Where(u => true);
+            //IQueryable<Income> iqIncome = oaEntities.Income.Where(u => true);
+            //List<UserIncomeDto> listDto = GetUserIncomeDtos(iqUser, iqIncome);
+            // }
+            // public List<UserIncomeDto> GetUserIncomeDtos(IQueryable<UserDetail> users, IQueryable<Income> incomes)
+            // {
             //            var query = from user in users
             //                        join income in incomes on user.Id equals income.UserId
             //                        group income by
@@ -54,42 +53,51 @@ namespace mianshi
             //                            Name = userincome.Key.Name,
             //                            Income = userincome.Sum(u => u.Amout)
             //                        };
-            var query = from user in users
-                        from income in incomes
-                        where user.Id == income.UserId
-                        group income by new { income.Month, income.Year, income.UserId, user.Name } into userincome
-                        select new UserIncomeDto
-                        {
-                            Income = userincome.Sum(n => n.Amout),
-                            Month = userincome.Key.Month,
-                            Year = userincome.Key.Year,
-                            Name = userincome.Key.Name
-                        };
+            //var query = from user in users
+            //            from income in incomes
+            //            where user.Id == income.UserId
+            //            group income by new { income.Month, income.Year, income.UserId, user.Name } into userincome
+            //            select new UserIncomeDto
+            //            {
+            //                Income = userincome.Sum(n => n.Amout),
+            //                Month = userincome.Key.Month,
+            //                Year = userincome.Key.Year,
+            //                Name = userincome.Key.Name
+            //  };
 
-            return query.ToList();
+            //return query.ToList();
         }
-        delegate void TestDelegate(string s);
-        void test(string s)
-        {
-            Console.Write(s);
-        }
+        // delegate void TestDelegate(string s);
+        //void test(string s)
+        //{
+        //    Console.Write(s);
+        //}
         private void button3_Click(object sender, EventArgs e)
         {
-            TestDelegate testDelA = new TestDelegate(test);
-            TestDelegate testDelB = delegate (string s) { Console.Write(s); };
-            TestDelegate testDelC = x => { Console.Write(x); };
-            testDelA("a");
-            testDelB("b");
-            testDelC("c");
+            //TestDelegate testDelA = new TestDelegate(test);
+            //TestDelegate testDelB = delegate (string s) { Console.Write(s); };
+            //TestDelegate testDelC = x => { Console.Write(x); };
+            //testDelA("a");
+            //testDelB("b");
+            //testDelC("c");
         }
-        Func<string,string> strFun = delegate (string s) { return "hello..." + s; };
+        // Func<string,string> strFun = delegate (string s) { return "hello..." + s; };
         private void button4_Click(object sender, EventArgs e)
         {
-           
+
             //Product p = new Product();
             //p.Name = "123";
             //MessageBox.Show(p.Validate2());
             //TimeHandler
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //ServiceReferenceWCF.Service1Client client = new ServiceReferenceWCF.Service1Client();
+            //label1.Text=client.DoWork(6, 9).ToString();
+            ServiceHost host = new ServiceHost(typeof(Service1));
+            host.Open();
+            Console.Write("ok");
         }
     }
 }

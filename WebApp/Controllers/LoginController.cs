@@ -16,6 +16,8 @@ namespace WebApp.Controllers
         IBLL.IUserInfoService userInfoService = new UserInfoService();
         public ActionResult Index()
         {
+            int i;
+            i = 10;
             CheckCookieInfo();
             return View();
         }
@@ -138,6 +140,12 @@ namespace WebApp.Controllers
                 Response.Cookies["cp2"].Expires = DateTime.Now.AddDays(-1);
             }
             return Redirect("/Login/Index");
+        }
+        #endregion
+        #region
+        public ActionResult TestState()
+        {
+            return View();
         }
         #endregion
     }

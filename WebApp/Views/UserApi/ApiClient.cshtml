@@ -1,0 +1,32 @@
+﻿@model List<Model.UserInfo>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ApiClient</title>
+</head>
+<body>
+    <div>
+        <table border="1">
+            <tr>
+                <th>姓名</th>
+                <th>备注</th>
+            </tr> 
+            
+            @foreach (Model.UserInfo userInfo in Model)
+            {
+                <tr>
+                    <td>@userInfo.UName</td>
+                    <td>@userInfo.Remark</td>
+                    
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

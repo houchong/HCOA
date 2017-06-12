@@ -35,5 +35,7 @@ namespace Model
         public virtual DbSet<WF_Instance> WF_Instance { get; set; }
         public virtual DbSet<WF_StepInfo> WF_StepInfo { get; set; }
         public virtual DbSet<WF_Temp> WF_Temp { get; set; }
+        public virtual DbSet<Income> Income { get; set; }
+        public virtual DbSet<UserDetail> UserDetail { get; set; }
     }
 }

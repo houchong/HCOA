@@ -157,6 +157,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PicController.cs" />
+    <Compile Include="Controllers\UserApiController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserDataController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Filters\MyAuthorization.cs" />
@@ -164,19 +166,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IJsToWcf.cs" />
-    <Compile Include="JsToWcf.aspx.cs">
-      <DependentUpon>JsToWcf.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Handler2.ashx.cs">
+      <DependentUpon>Handler2.ashx</DependentUpon>
     </Compile>
-    <Compile Include="JsToWcf.aspx.designer.cs">
-      <DependentUpon>JsToWcf.aspx</DependentUpon>
+    <Compile Include="HCService.svc.cs">
+      <DependentUpon>HCService.svc</DependentUpon>
     </Compile>
-    <Compile Include="JsToWcf.svc.cs">
-      <DependentUpon>JsToWcf.svc</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="OperationContract.cs" />
+    <Compile Include="IHCService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\JsService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -365,7 +361,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="bin\DAL.dll.config" />
     <Content Include="bin\WebApp.dll.config" />
+    <Content Include="Handler2.ashx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="HCService.svc" />
     <Content Include="HtmlPage1.html" />
     <Content Include="Scripts\datapattern.js" />
     <Content Include="Scripts\easyui-lang-zh_CN.js" />
@@ -380,8 +378,6 @@
       <LastGenOutput>TextTemplate1.cs</LastGenOutput>
     </Content>
     <Content Include="WebForm1.aspx" />
-    <Content Include="JsToWcf.aspx" />
-    <Content Include="JsToWcf.svc" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -433,6 +429,9 @@
     <Content Include="Views\Home\HomePage.cshtml" />
     <Content Include="Views\Login\FindPwd.cshtml" />
     <Content Include="Views\Pic\Index.cshtml" />
+    <Content Include="Views\UserApi\Index.cshtml" />
+    <Content Include="Views\UserApi\ApiClient.cshtml" />
+    <Content Include="Views\Login\TestState.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
