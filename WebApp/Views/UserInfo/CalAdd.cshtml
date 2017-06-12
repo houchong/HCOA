@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script>
+    $(function () {
+        $("#btnAdd").click(function () {
+            $.post(
+                "@Url.Action("AddNum", "UserInfo")",
+                $("#form1").serialize(),
+                function(msg)
+                {
+                    $("#sum").val(msg);
+                }
+                );
+        })
+    })
+</script>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CalAdd</title>
+</head>
+<body>
+    <div>
+        <form id="form1">
+            <input type="text" name="cal1"/>+
+            <input type="text" name="cal2"/>
+            <input  type="button" id="btnAdd" value="加" />
+            <input name="sum" id="sum" value="" />
+        </form>
+    </div>
+</body>
+</html>

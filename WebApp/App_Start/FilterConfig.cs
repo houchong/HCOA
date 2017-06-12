@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using Model;
+using System.Web;
 using System.Web.Mvc;
 
 namespace WebApp
@@ -8,6 +9,7 @@ namespace WebApp
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            //filters.Add(new MyExceptionHandler());
         }
     }
 }

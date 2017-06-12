@@ -16,10 +16,11 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,17 +31,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\WebApp\bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,51 +59,92 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserInfo.Context.cs">
+    <Compile Include="ActionEqualityCompare\ActionEqualCompare.cs" />
+    <Compile Include="ActionInfo.cs">
+      <DependentUpon>modelOA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActionTypeEnum.cs" />
+    <Compile Include="Department.cs">
+      <DependentUpon>modelOA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Enum\DeleteEnumType.cs" />
+    <Compile Include="FileInfo.cs">
+      <DependentUpon>modelOA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Income.cs">
+      <DependentUpon>modelOA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelOA.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UserInfo.Context.tt</DependentUpon>
+      <DependentUpon>modelOA.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelOA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>modelOA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelOA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>modelOA.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MyExceptionHandler.cs" />
+    <Compile Include="OrderInfo.cs">
+      <DependentUpon>modelOA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleInfo.cs">
+      <DependentUpon>modelOA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="R_UserInfo_ActionInfo.cs">
+      <DependentUpon>modelOA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SearchPars\SearchBase.cs" />
+    <Compile Include="SearchPars\UserInfoSearch.cs" />
+    <Compile Include="UserDetail.cs">
+      <DependentUpon>modelOA.tt</DependentUpon>
     </Compile>
     <Compile Include="UserInfo.cs">
-      <DependentUpon>UserInfo.tt</DependentUpon>
+      <DependentUpon>modelOA.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserInfo.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserInfo.edmx</DependentUpon>
+    <Compile Include="WF_Instance.cs">
+      <DependentUpon>modelOA.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserInfo1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserInfo.tt</DependentUpon>
+    <Compile Include="WF_StepInfo.cs">
+      <DependentUpon>modelOA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WF_Temp.cs">
+      <DependentUpon>modelOA.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="UserInfo.edmx">
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="modelOA.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UserInfo.Designer.cs</LastGenOutput>
+      <LastGenOutput>modelOA.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="modelOA.edmx.diagram">
+      <DependentUpon>modelOA.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
-    <None Include="UserInfo.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserInfo.edmx</DependentUpon>
-      <LastGenOutput>UserInfo.Context.cs</LastGenOutput>
-    </None>
-    <None Include="UserInfo.edmx.diagram">
-      <DependentUpon>UserInfo.edmx</DependentUpon>
-    </None>
-    <None Include="UserInfo.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserInfo.edmx</DependentUpon>
-      <LastGenOutput>UserInfo1.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="modelOA.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>modelOA.edmx</DependentUpon>
+      <LastGenOutput>modelOA.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="modelOA.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>modelOA.edmx</DependentUpon>
+      <LastGenOutput>modelOA.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,8 @@ namespace DAL
 {
     public  class BaseDal<T>where T:class,new()
     {
-        OAEntities Db = new OAEntities();
+        //OAEntities Db = new OAEntities();
+        DbContext Db = DBContextFactory.CreateDbContext();//完成EF上下文的创建
         /// <summary>
         /// 基本查询
         /// </summary>
@@ -52,7 +54,8 @@ namespace DAL
         public bool DeleteEntity(T entity)
         {
             Db.Entry<T>(entity).State = System.Data.Entity.EntityState.Deleted;
-            return Db.SaveChanges() > 0;
+            //return Db.SaveChanges() > 0;
+            return true;
         }
         /// <summary>
         /// 修改
@@ -62,7 +65,8 @@ namespace DAL
         public bool UpdateEntity(T entity)
         {
             Db.Entry<T>(entity).State = System.Data.Entity.EntityState.Modified;
-            return Db.SaveChanges() > 0;
+            //return Db.SaveChanges() > 0;
+            return true;
         }
         /// <summary>
         /// 增加
@@ -72,7 +76,7 @@ namespace DAL
         public T AddEntity(T entity)
         {
             Db.Set<T>().Add(entity);
-            Db.SaveChanges();
+           // Db.SaveChanges();
             return entity;
         }
     }
