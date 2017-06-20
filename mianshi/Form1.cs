@@ -95,9 +95,9 @@ namespace mianshi
         {
             //ServiceReferenceWCF.Service1Client client = new ServiceReferenceWCF.Service1Client();
             //label1.Text=client.DoWork(6, 9).ToString();
-            ServiceHost host = new ServiceHost(typeof(Service1));
-            host.Open();
-            Console.Write("ok");
+        //    ServiceHost host = new ServiceHost(typeof(Service1));
+        //    host.Open();
+        //    Console.Write("ok");
         }
     }
 }
